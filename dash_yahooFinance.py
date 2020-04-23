@@ -1,9 +1,3 @@
-
-# coding: utf-8
-
-# In[ ]:
-
-
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
@@ -34,11 +28,9 @@ from ib_insync import *
 import datetime
 
 
-# In[ ]:
-
 
 # Connect to yahoo finance---> Get historical price data---> Transfer to pandas dataframe---> Save to CSV file
-
+'''
 def get_data_to_csv_yahoo_finance(ticker,start_date,end_date):
     
     securities = YahooFinancials(ticker)
@@ -48,121 +40,104 @@ def get_data_to_csv_yahoo_finance(ticker,start_date,end_date):
     securities_dataFrame = pd.DataFrame(securities_daily_price[ticker]['prices'])
     
     securities_dataFrame.to_csv(ticker+'_daily_price_yahooFinance1.csv')
-
-
-# In[ ]:
+'''
 
 
 # Run the above function- 5 years Google data from 2015 to 2020
-
+'''
 today=datetime.date.today()
 get_data_to_csv_yahoo_finance('GOOG','2015-01-01',str(today))
-
-
-# In[ ]:
+'''
 
 
 # View the pandas dataframe
 
-df=pd.read_csv("GOOG_daily_price_yahooFinance1.csv")
-df.head()
+url1 = 'https://raw.githubusercontent.com/soorajpu12/newdash1/master/GOOG_daily_price_yahooFinance1.csv'
+df = pd.read_csv(url1, error_bad_lines=False)
+
+#df.head()
 df["Date"] = pd.to_datetime(df["formatted_date"])
 df["year"] = df["Date"].dt.year
 df['month'] = df['Date'].dt.month
 df['volume_higher_than_4M'] = np.where(df['volume']>4000000, 1, 0)
-df.head()
+#df.head()
 
-
-# In[ ]:
 
 
 # Run the above function- 5 years Microsoft data from 2015 to 2020
-
+'''
 today=datetime.date.today()
 get_data_to_csv_yahoo_finance('MSFT','2015-01-01',str(today))
-
-
-# In[ ]:
+'''
 
 
 # View the pandas dataframe
 
-df2=pd.read_csv("MSFT_daily_price_yahooFinance1.csv")
-df2.head()
+url2 = 'https://raw.githubusercontent.com/soorajpu12/newdash1/master/MSFT_daily_price_yahooFinance1.csv'
+df2 = pd.read_csv(url2, error_bad_lines=False)
+
+#df2.head()
 df2["Date"] = pd.to_datetime(df2["formatted_date"])
 df2["year"] = df2["Date"].dt.year
 df2['month'] = df2['Date'].dt.month
-df2.head()
+#df2.head()
 
-
-# In[ ]:
 
 
 # Run the above function- 5 years Apple data from 2015 to 2020
-
+'''
 today=datetime.date.today()
 get_data_to_csv_yahoo_finance('AAPL','2015-01-01',str(today))
-
-
-# In[ ]:
-
+'''
 
 # View the pandas dataframe
 
-df3=pd.read_csv("AAPL_daily_price_yahooFinance1.csv")
-df3.head()
+url3 = 'https://raw.githubusercontent.com/soorajpu12/newdash1/master/AAPL_daily_price_yahooFinance1.csv'
+df3 = pd.read_csv(url3, error_bad_lines=False)
+
+#df3.head()
 df3["Date"] = pd.to_datetime(df3["formatted_date"])
 df3["year"] = df3["Date"].dt.year
 df3['month'] = df3['Date'].dt.month
 df['volume_higher_than_5M'] = np.where(df['volume']>5000000, 1, 0)
-df3.head()
-
-
-# In[ ]:
-
+#df3.head()
 
 # Run the above function- 5 years Netflix data from 2015 to 2020
-
+'''
 today=datetime.date.today()
 get_data_to_csv_yahoo_finance('NFLX','2015-01-01',str(today))
-
-
-# In[ ]:
-
+'''
 
 # View the pandas dataframe
 
-df4=pd.read_csv("NFLX_daily_price_yahooFinance1.csv")
-df4.head()
+url4 = 'https://raw.githubusercontent.com/soorajpu12/newdash1/master/AAPL_daily_price_yahooFinance1.csv'
+df4 = pd.read_csv(url4, error_bad_lines=False)
+
+#df4.head()
 df4["Date"] = pd.to_datetime(df4["formatted_date"])
 df4["year"] = df4["Date"].dt.year
 df4['month'] = df4['Date'].dt.month
-df4.head()
-
-
-# In[ ]:
-
+#df4.head()
 
 # Run the above function- 5 years Amazon data from 2015 to 2020
-
+'''
 today=datetime.date.today()
 get_data_to_csv_yahoo_finance('AMZN','2015-01-01',str(today))
-
-
-# In[ ]:
-
+'''
 
 # View the pandas dataframe
 
-df5=pd.read_csv("AMZN_daily_price_yahooFinance1.csv")
-df5.head()
+url5 = 'https://github.com/soorajpu12/newdash1/blob/master/AMZN_daily_price_yahooFinance1.csv'
+df5 = pd.read_csv(url5, error_bad_lines=False)
+
+#df5.head()
 df5["Date"] = pd.to_datetime(df5["formatted_date"])
 df5["year"] = df5["Date"].dt.year
 df5['month'] = df5['Date'].dt.month
-df5.head()
+#df5.head()
 
 
-# In[ ]:
+############################################# PLOTLY ###########################################################
 
 
 # using plotly dash
